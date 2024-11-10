@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fotografie Club Rooster</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    /* Stijl voor de navigatie */
+    nav {
+      background-color: #333;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 15px;
+      font-size: 1.1em;
+      background-color: #444;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: #2980B9;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    #schedule {
+      margin: 20px;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .break {
+      background-color: #e0e0e0;
+      font-weight: bold; /* Dikte van de tekst voor pauzes */
+    }
+
+    .empty {
+      background-color: #f9f9f9;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigatie sectie -->
+  <nav>
+    <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="regels.html">Regels</a></li>
+          <li><a href="leden.html">Leden</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="rooster.html">Rooster</a></li>
+          <li><a href="wedstrijden.html">wedstrijden</a></li>
+		  <li><a href="winnaarlid.html">Winnaarlid</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Fotografie Club Rooster</h1>
+    <p>Bekijk het rooster van de fotografieclub en pas de tijden makkelijk aan via de code.</p>
+  </header>
+
+  <section id="schedule">
+    <h2>Rooster</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Tijd</th>
+          <th>Maandag</th>
+          <th>Dinsdag</th>
+          <th>Woensdag</th>
+          <th>Donderdag</th>
+          <th>Vrijdag</th>
+          <th>Zaterdag</th>
+          <th>Zondag</th>
+        </tr>
+      </thead>
+      <tbody id="schedule-body">
+        <!-- Rooster wordt hier geladen door JavaScript -->
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    <p>Fotografie Club - 2024</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

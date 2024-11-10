@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fotografieclub - Winnaar</title>
+  <style>
+    /* Algemene stijlen voor de body */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* Zorgt ervoor dat de pagina altijd ten minste de hoogte van het scherm vult */
+    }
+
+    header {
+      background-color: #2C3E50;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-size: 1.1em;
+      margin-top: 5px;
+    }
+
+    /* Stijl voor de navigatie */
+    nav {
+      margin-top: 15px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 0;
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.1em;
+      padding: 8px 15px;
+      border-radius: 20px;
+      background-color: #34495E;
+      transition: background-color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: #2980B9;
+    }
+
+    /* Stijlen voor de secties */
+    section {
+      padding: 40px 15px;
+      text-align: center;
+      max-width: 900px;
+      margin: 20px auto;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    section h2 {
+      font-size: 2em;
+      margin-bottom: 15px;
+      color: #34495E;
+    }
+
+    section p {
+      font-size: 1.2em;
+      color: #555;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Stijlen voor de footer */
+    footer {
+      background-color: #2C3E50;
+      color: #fff;
+      padding: 15px 0;
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9em;
+      flex-shrink: 0; /* Zorgt ervoor dat de footer niet samendrukt als de inhoud kort is */
+    }
+
+    /* Responsieve stijlen voor kleinere schermen */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      section {
+        padding: 30px 15px;
+      }
+
+      header h1 {
+        font-size: 2em;
+      }
+
+      section h2 {
+        font-size: 1.7em;
+      }
+
+      footer {
+        font-size: 0.85em;
+      }
+    }
+
+    /* Winnaar sectie */
+    .winner-info {
+      padding: 40px 0;
+      background-color: #fff;
+    }
+
+    .winner-info h2 {
+      font-size: 2.2em;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    .winner-info .photo-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .winner-info .winner-photo {
+      max-width: 80%; /* Foto kleiner maken */
+      height: auto;
+      border: 5px solid #ddd;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .winner-info h3 {
+      font-size: 1.8em;
+      color: #34495e;
+      margin-top: 30px;
+    }
+
+    .winner-info .winner-description,
+    .winner-info .personal-message,
+    .winner-info .about-container,
+    .winner-info .winner-extra-info {
+      background-color: #ecf0f1;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .winner-info .winner-description p,
+    .winner-info .personal-message p,
+    .winner-info .about-container p,
+    .winner-info .winner-extra-info p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      color: #7f8c8d;
+    }
+
+    .winner-info .winner-description strong,
+    .winner-info .personal-message strong,
+    .winner-info .about-container strong,
+    .winner-info .winner-extra-info strong {
+      color: #2c3e50;
+    }
+
+    /* Verwijder onnodige margin/padding van secties */
+    section.winner-info div {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Fotografieclub - Winnaar</h1>
+    <p>Gefeliciteerd aan de winnaar van de maand!</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="regels.html">Regels</a></li>
+        <li><a href="leden.html">Leden</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="rooster.html">Rooster</a></li>
+        <li><a href="wedstrijden.html">Wedstrijden</a></li>
+        <li><a href="winnaarlid.html">Winnaarlid</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="winner-info">
+    <h2>Max Prosper - Winnaar van de Natuurfotografie Wedstrijd</h2>
+    <p><strong>Titel van de Foto:</strong> Zonsondergang in het Bos</p>
+
+    <!-- Winnende Foto -->
+    <div class="photo-container">
+      <h3>De Winnende Foto</h3>
+      <img src="winnaar.jpg" alt="Winnende natuurfoto van Max Prosper" class="winner-photo">
+    </div>
+
+    <!-- Beschrijving waarom de foto heeft gewonnen -->
+    <div class="winner-description">
+      <h3>Waarom deze foto heeft gewonnen</h3>
+      <p>
+        <strong>Omdat deze foto:</strong> De foto vangt de serene sfeer van een zonsondergang in het bos, waarbij het zachte licht de details van de bomen en het gras perfect benadrukt. De compositie en het gebruik van natuurlijk licht maken de foto uniek en adembenemend.
+      </p>
+    </div>
+
+    <!-- Persoonlijk bericht van de winnaar -->
+    <div class="personal-message">
+      <h3>Mijn Persoonlijke Bericht</h3>
+      <p>
+        <strong>Deze overwinning betekent voor mij:</strong> Deze overwinning is voor mij een bevestiging dat mijn passie voor natuurfotografie steeds sterker wordt. Het motiveert me om mijn camera vaker mee naar buiten te nemen en nog meer bijzondere momenten vast te leggen. Ik ben trots op deze prestatie en dankbaar voor de erkenning.
+      </p>
+    </div>
+
+    <!-- Over de winnaar zelf -->
+    <div class="about-container">
+      <h3>Over de Winnaar</h3>
+      <p>Max Prosper is een gepassioneerde natuurfotograaf die al jaren de schoonheid van de natuur vastlegt. Zijn werk is geïnspireerd door de rust en de pracht van het buitenleven, en hij probeert de kijker te laten voelen wat hij zelf ervaart wanneer hij door de natuur wandelt. Max heeft verschillende fotografieprijzen gewonnen en blijft zich ontwikkelen als kunstenaar. Het vastleggen van de natuur is niet alleen zijn passie, maar ook zijn manier om de wereld op een meer waardevolle manier te zien.</p>
+    </div>
+
+    <!-- Extra informatie sectie door de winnaar -->
+    <div class="winner-extra-info">
+      <h3>Extra Informatie</h3>
+      <p>
+        <strong>Waarom fotografeer ik?</strong> Fotografie stelt me in staat om momenten van schoonheid te bewaren en anderen te inspireren om de wereld om hen heen te waarderen. Elke foto is een poging om de emotie van het moment vast te leggen.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Fotografieclub. Alle rechten voorbehouden.</p>
+  </footer>
+</body>
+</html>

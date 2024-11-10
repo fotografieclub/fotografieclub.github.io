@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ledenpagina</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Schoolclub Leden</h1>
+    <p>Bekijk hoeveel leden we hebben en of er nog plekken beschikbaar zijn!</p>
+    
+    <!-- Navigatie knoppen binnen de header -->
+    <nav>
+      <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="regels.html">Regels</a></li>
+          <li><a href="leden.html">Leden</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="rooster.html">Rooster</a></li>
+          <li><a href="wedstrijden.html">wedstrijden</a></li>
+		  <li><a href="winnaarlid.html">Winnaarlid</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="leden-page">
+    <h2>Aantal Leden en Beschikbaarheid</h2>
+    <div class="leden-info">
+      <p>Momenteel zijn er <span class="leden-aantal">5 leden</span> ingeschreven.</p>
+      <p class="leden-status">Er zijn nog <span class="leden-aantal">20 plaatsen</span> beschikbaar!</p>
+    </div>
+
+    <div class="leden-knoppen">
+      <!-- Verwijzingen toegevoegd naar de Aanmelden- en Meer Informatie-pagina's -->
+      <a href="aanmelden.html">Aanmelden</a>
+      <a href="meerinfo.html">Meer Informatie</a>
+    </div>
+
+    <div class="qr-code-container">
+      <!-- Maak de QR-code afbeelding klikbaar -->
+      <a href="qrcode.png" target="_blank">
+        <img src="qrcode.png" alt="QR Code" class="qr-code">
+      </a>
+      <p class="qr-text">Scan deze om aan te melden. Als hij te klein is, kun je de QR-code aanklikken.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Schoolclub. Alle rechten voorbehouden.</p>
+  </footer>
+</body>
+</html>
