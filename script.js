@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
       "14:05-14:25": "Pauze",
       "14:25-15:15": "",
       "15:15-16:05": "",
-      "16:05-17:05": "110a"
+      "16:05-17:05": "Vrij"
     },
     dinsdag: {
       "08:15-09:05": "",
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
       "14:05-14:25": "Pauze",
       "14:25-15:15": "",
       "15:15-16:05": "",
-      "16:05-17:05": "ontmoeting ingang"
+      "16:05-17:05": "Vrij"
     },
     vrijdag: {
       "08:15-09:05": "",
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
       "14:05-14:25": "pauze",
       "14:25-15:15": "",
       "15:15-16:05": "",
-      "16:05-17:05": "Les in 110d"
+      "16:05-17:05": "Vrij"
     },
     zaterdag: {
       "08:15-09:05": "Vrij",
