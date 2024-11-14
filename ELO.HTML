@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotografie Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        h2, h3 {
+            text-align: center;
+        }
+
+        input, select, button {
+            padding: 10px;
+            margin: 10px 0;
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #loginSection, #quizSection {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #resultSection {
+            background-color: #e7f7e7;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #quizQuestions {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .question {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        label {
+            vertical-align: middle;
+        }
+
+        #timer {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff0000;
+        }
+
+        #loginError {
+            color: red;
+            font-size: 14px;
+        }
+
+        #submitBtn {
+            margin-top: 20px;
+        }
+
+        #quizSelect {
+            width: 100%;
+            max-width: 350px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Inlogsectie -->
+<div id="loginSection">
+    <h2>Log in om de toets te maken</h2>
+    <label for="username">Gebruikersnaam:</label>
+    <input type="text" id="username" required>
+    <label for="password">Wachtwoord:</label>
+    <input type="password" id="password" required>
+    <button onclick="login()">Inloggen</button>
+    <div id="loginError" style="color: red; display: none;">Onjuiste inloggegevens!</div>
+</div>
+
+<!-- Quizsectie -->
+<div id="quizSection" style="display:none;">
+    <h2>Welkom, <span id="userDisplay"></span>!</h2>
+    <h3>Kies een toets:</h3>
+    <select id="quizSelect" onchange="startQuiz()">
+        <option value="camera">Toets 1: Camera</option>
+        <option value="instellingen">Toets 2: Instellingen</option>
+        <option value="compositie">Toets 3: Compositie</option>
+        <option value="filters">Toets 4: Filters en Studio</option>
+    </select>
+    
+    <h3 id="timer" style="display:none;">Tijd over: 10:00</h3>
+    
+    <div id="quizQuestions"></div>
+    
+    <button id="submitBtn" onclick="submitQuiz()" style="display:none;">Toets inleveren</button>
+    
+    <div id="resultSection" style="display:none;">
+        <h3>Je score:</h3>
+        <p id="score"></p>
+        <p id="percentage"></p>
+        <p>Let op: Je mag opstaan om je score aan de docent te laten zien!</p>
+    </div>
+</div>
+
+<script>
+    let currentQuiz = null;
+    let score = 0;
+    let totalQuestions = 10; // Aantal vragen per toets
+    let timer;
+    let timeLeft = 600; // 10 minuten in seconden
+
+    // Gebruikersinlog
+    function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        if (username === 'user' && password === 'password') {
+            document.getElementById("loginSection").style.display = "none";
+            document.getElementById("quizSection").style.display = "block";
+            document.getElementById('userDisplay').innerText = username;
+        } else {
+            document.getElementById("loginError").style.display = "block";
+        }
+    }
+
+    // Start de quiz met geselecteerde toets
+    function startQuiz() {
+        const quizSelect = document.getElementById('quizSelect');
+        currentQuiz = quizSelect.value;
+        generateQuestions();
+        startTimer();
+        document.getElementById('submitBtn').style.display = "block";
+        document.getElementById('timer').style.display = "block";
+    }
+
+    // Timer voor 10 minuten
+    function startTimer() {
+        timer = setInterval(function() {
+            timeLeft--;
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').innerText = `Tijd over: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                alert('Tijd is om!');
+                submitQuiz();
+            }
+        }, 1000);
+    }
+
+    // Genereer 10 vragen op basis van de geselecteerde toets
+    function generateQuestions() {
+        const quizQuestionsDiv = document.getElementById('quizQuestions');
+        quizQuestionsDiv.innerHTML = '';  // Maak de vorige vragen leeg
+        
+        let questions = getQuestionsForQuiz(currentQuiz);
+
+        questions.forEach((question, index) => {
+            let questionHTML = `<div class="question" id="question${index}">
+                                    <p><strong>${index + 1}. ${question.text}</strong></p>`;
+            question.options.forEach((option, i) => {
+                questionHTML += `<input type="checkbox" name="q${index}" value="${i}" onclick="disableAnswer(${index})" /> 
+                                <label>${option}</label><br>`;
+            });
+            questionHTML += '</div>';
+            quizQuestionsDiv.innerHTML += questionHTML;
+        });
+    }
+
+    // Disable de checkboxen voor antwoorden zodra ze zijn aangeklikt
+    function disableAnswer(questionIndex) {
+        const questionDiv = document.getElementById(`question${questionIndex}`);
+        const checkboxes = questionDiv.getElementsByTagName('input');
+        
+        // Zorg ervoor dat de checkboxes niet meer gewijzigd kunnen worden na selectie
+        Array.from(checkboxes).forEach(checkbox => {
+            checkbox.disabled = true;
+        });
+    }
+
+    // Haal de vragen op voor de geselecteerde toets
+    function getQuestionsForQuiz(quiz) {
+        const questions = {
+            "camera": [
+                { text: "Wat is een full-frame camera?", options: ["Een camera zonder spiegel", "Een camera met een grotere sensor", "Een camera met een kleiner sensorformaat"], correct: 1 },
+                { text: "Wat betekent de term 'megapixels'?", options: ["De kwaliteit van de lens", "De resolutie van de foto", "De snelheid van de sluiter"], correct: 1 },
+                { text: "Wat is een prime lens?", options: ["Een lens met een variabele brandpuntsafstand", "Een lens met een vaste brandpuntsafstand", "Een lens met automatische focus"], correct: 1 },
+                { text: "Wat is het voordeel van een spiegelreflexcamera?", options: ["Lichtgewicht en compact", "Snellere autofocus", "Betere beeldkwaliteit in slechte lichtomstandigheden"], correct: 2 },
+                { text: "Wat betekent 'crop sensor'?", options: ["Een kleiner sensorformaat dan full-frame", "Een type camera", "Een type lens"], correct: 0 },
+                { text: "Wat doet de sluiter in een camera?", options: ["Regelt de belichtingstijd", "Regelt de scherpte", "Verhoogt de resolutie"], correct: 0 },
+                { text: "Wat is een vergrotingsfactor in een lens?", options: ["Het effect van de lens op de scherptediepte", "Hoeveel keer je het beeld kunt vergroten", "De hoeveelheid licht die de lens doorlaat"], correct: 1 }
+            ]
+            // Voeg meer toetsinformatie toe voor 'instellingen', 'compositie', 'filters', etc.
+        };
+        return questions[quiz] || [];
+    }
+
+    // Inleveren toets en berekenen van score
+    function submitQuiz() {
+        score = 0;
+        const questionsDiv = document.getElementById('quizQuestions');
+        const allQuestions = questionsDiv.getElementsByClassName('question');
+        
+        Array.from(allQuestions).forEach((question, index) => {
+            const selectedOption = question.querySelector('input[type="checkbox"]:checked');
+            if (selectedOption) {
+                const selectedAnswer = parseInt(selectedOption.value);
+                const correctAnswer = getQuestionsForQuiz(currentQuiz)[index].correct;
+                if (selectedAnswer === correctAnswer) {
+                    score++;
+                }
+            }
+        });
+
+        const percentage = (score / totalQuestions) * 100;
+        document.getElementById('score').innerText = `Je hebt ${score} van de ${totalQuestions} vragen goed beantwoord.`;
+        document.getElementById('percentage').innerText = `Je score is ${percentage.toFixed(2)}%`;
+        document.getElementById('resultSection').style.display = "block";
+    }
+</script>
+
+</body>
+</html>
